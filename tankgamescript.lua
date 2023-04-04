@@ -60,6 +60,29 @@ Name = <string> - The name of the button.
 Callback = <function> - The function of the button.
 ]]
 
+Tab:AddButton({
+    Name = "Auto Kill", 
+    Callback = function ()
+        OrionLib:MakeNotification({
+            Name = "Note from dev:",
+            Content = "If get kick use anti kick next time and it not work if you not sellect tank your using!",
+            Image = "rbxassetid://6525527347",
+            Time = 3
+        })
+        local PlayerUsername = game:GetService("Players").LocalPlayer.name
+       for i,v in pairs(game.Players:GetPlayers()) do
+            if v ~= game.Players.LocalPlayer and v.Team ~= tostring(game.Players.LocalPlayer.Team) then
+                plr = v
+            end
+        end
+        game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(plr.Character.HumanoidRootPart.CFrame + Vector3.new(0,-10,0))
+        task.wait(0.1)
+        game:GetService("Workspace"):FindFirstChild(PlayerUsername):FindFirstChild(TankToSpawn).Target.Value = plr.Character.HumanoidRootPart.Position
+        game:GetService("Players").LocalPlayer.Character:FindFirstChild(tank).StartFiring:FireServer()
+        task:wait()
+        game:GetService("Players").LocalPlayer.Character:FindFirstChild(TankToSpawn).StopFiring:FireServer()
+    end
+})
 
 
 
