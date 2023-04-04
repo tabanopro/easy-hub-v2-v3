@@ -25,10 +25,10 @@ Tab:AddDropdown({
 	Name = "Free Tank",
 	Default = "1",
 	Options = {'AMX1390', 'SU12244', 'AMX13902', 'Achilles', 'UC2pdr', 'Charioteer', 'T54', 'Centurion', 'Challenger', 'Cheeto', 'ChiHa', 'SdKfz234', 'T67', 'PantherM10', 'M4', 'VK3001', 'Valentine', 'T23E3', 'Tiger1', 'T95E6', 'M60SS', 'GAZ72', 'T44', 'T3485', 'T32', 'T34', 'T1E6', 'T-50', 'STB1', 'm24', 'S35', 'Pz38t', 'ShermanFirefly', 'T-26', 'T-46', 'Panzer3', 'Pershing', 'Panther', 'Panzer4', 'Comet', 'M5A1', 'M4A3E8', 'M4A3105', 'M48A5', 'LTvz38', 'Luchs', 'M10', 'M2', 'M18', 'T-28', 'KingTiger', 'Hetzer', 'KeNi', 'KV2', 'KV1', 'IS8', 'IS2', 'Crusader3', 'M48A1', 'Ferdinand', 'FMax', 'E100e', 'M36B1', 'STA1', 'Conqueror', 'JPanther', 'HC', 'Lorraine39L', 'M41WB', 'KeHo', 'Churchill3', 'M36', 'T34A', 'ChurchillVII', 'IS3', 'SU85B', 'Pz2', 'Fury', 'Pz38tG', 'JTiger', 'T80', 'T28', 'T28p', 'Leopard', 'ChiNu', 'Luchs3cm', 'KV85', 'Crusader2', 'Panther2', 'Panzer4Event', 'T-44-122', 'SU152', 'PZ2M', 'CrusaderSP', 'T110E5', 'M4A3E2', 'IndienPanzer', 'E50', 'Panzer 3M', 'PZJ1', 'Panzer 4C', 'HaGo', 'Cromwell', 'm4a1', 'M4A1R', 'TigerJ', 'Stug3', 'RU251', 'SU85', 'ShtuGB', 'AMX13152', 'M4FL10', 'Panzer3K', 'AMX1324', 'M24 60MM', 'PantherC', 'B1', 'MBT70', 'Centurion7', 'T62', 'T341940', 'Panzer3F', 'M4A2', 'M4A275', 'KingTigerZ', 'Tiger1Z', 'PantherZ', 'E100', 'T54b', 'CharioteerL7', 'Tiger134', 'HoNiI', 'BP57', 'AMX50', 'ARL44', 'ACG1', 'BatChat', 'Lorraine40t', 'SU100P', 'T34122'},
-    Callback = function(Value)
+    	Callback = function(Value)
         print(Value)
         TankToSpawn = Value
-    end    
+    	end    
 })
 
 --[[
