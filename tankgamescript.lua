@@ -1,6 +1,6 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 
-local Window = OrionLib:MakeWindow({Name = " Easy Hub (Free) - [Tankery!] ~ Collab with Noob Army Script~ ", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest", IntroEnabled = true, IntroText = "Please wait.. Easy Hub Loading..."})
+local Window = OrionLib:MakeWindow({Name = " ~Easy Hub V2 (Free) - [Tankery!]~ ", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest", IntroEnabled = true, IntroText = "Please wait.. Easy Hub V2 Loading..."})
 
 --[[
 Name = <string> - The name of the UI.
@@ -43,7 +43,7 @@ Tanks:AddButton({
 	Callback = function()
         OrionLib:MakeNotification({
             Name = "Note from dev:",
-            Content = "Some tank model will not spawn correctly but still works fine. And use only once in lobby",
+            Content = "only work once! cuz idk",
             Image = "rbxassetid://6525527347",
             Time = 3
         })
@@ -60,100 +60,19 @@ Name = <string> - The name of the button.
 Callback = <function> - The function of the button.
 ]]
 
-function Teleport(XP,YP,ZP)
--- Config How Many Blocks It Will Tp You Untill The Final Destination:
-local XTpEvery = 10
-local YTpEvery = 10
-local ZTpEvery = 10
---Time to Tp Every:
-local Timer = 0.001
-local pos = game:GetService('Players').LocalPlayer.Character.HumanoidRootPart
-if pos.Position.X < XP then
-for x = pos.Position.X,XP,XTpEvery do
-game.Players.LocalPlayer.Character:MoveTo(Vector3.new(x,pos.Position.Y,pos.Position.Z))
-local part = Instance.new("Part", workspace)
-part.Anchored = true
-part.Size = Vector3.new(10,0.1,10)
-part.Material = "Glass"
-part.BrickColor = BrickColor.Random()
-part.Transparency = 0.7
-part.Position = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position + Vector3.new(0,-3.05,0)
-wait(Timer)
-part.Destroy(part)
-end
-else
-for x = pos.Position.X,XP,-XTpEvery do
-game.Players.LocalPlayer.Character:MoveTo(Vector3.new(x,pos.Position.Y,pos.Position.Z))
-local part = Instance.new("Part", workspace)
-part.Anchored = true
-part.Size = Vector3.new(10,0.1,10)
-part.Material = "Glass"
-part.BrickColor = BrickColor.Random()
-part.Transparency = 0.7
-part.Position = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position + Vector3.new(0,-3.05,0)
-wait(Timer)
-part.Destroy(part)
-end
-end
-if pos.Position.Z < ZP then
-for z = pos.Position.Z,ZP,ZTpEvery do
-game.Players.LocalPlayer.Character:MoveTo(Vector3.new(pos.Position.X,pos.Position.Y,z))
-local part = Instance.new("Part", workspace)
-part.Anchored = true
-part.Size = Vector3.new(10,0.1,10)
-part.Material = "Glass"
-part.BrickColor = BrickColor.Random()
-part.Transparency = 0.7
-part.Position = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position + Vector3.new(0,-3.05,0)
-wait(Timer)
-part.Destroy(part)
-end
-else
-for z = pos.Position.Z,ZP,-ZTpEvery do
-game.Players.LocalPlayer.Character:MoveTo(Vector3.new(pos.Position.X,pos.Position.Y,z))
-local part = Instance.new("Part", workspace)
-part.Anchored = true
-part.Size = Vector3.new(10,0.1,10)
-part.Material = "Glass"
-part.BrickColor = BrickColor.Random()
-part.Transparency = 0.7
-part.Position = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position + Vector3.new(0,-3.05,0)
-wait(Timer)
-part.Destroy(part)
-end
-end
-if pos.Position.Y < YP then
-for High = pos.Position.Y,YP,YTpEvery do
-game.Players.LocalPlayer.Character:MoveTo(Vector3.new(pos.Position.X ,High ,pos.Position.Z))
-local part = Instance.new("Part", workspace)
-part.Anchored = true
-part.Size = Vector3.new(10,0.1,10)
-part.Material = "Glass"
-part.BrickColor = BrickColor.Random()
-part.Transparency = 0.7
-part.Position = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position + Vector3.new(0,-3.05,0)
-wait(Timer)
-part.Destroy(part)
-end
-else
-for High = pos.Position.Y,YP,-YTpEvery do
-game.Players.LocalPlayer.Character:MoveTo(Vector3.new(pos.Position.X ,High ,pos.Position.Z))
-local part = Instance.new("Part", workspace)
-part.Anchored = true
-part.Size = Vector3.new(10,0.1,10)
-part.Material = "Glass"
-part.BrickColor = BrickColor.Random()
-part.Transparency = 0.7
-part.Position = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position + Vector3.new(0,-3.05,0)
-wait(Timer)
-part.Destroy(part)
-end
-end
-game:GetService('Players').LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(XP + 5,YP,ZP + 5)
-end
-function TeleportTP(CFrame)
-    Teleport(CFrame.X,CFrame.Y,CFrame.Z)
-end
+Tanks:AddButton({
+    Name = "Change Tank Preview To:(Select tank first)", 
+    Callback = function()
+        local args = {
+            [1] = {
+                [1] = TankToSpawn
+            }
+        }
+        
+        workspace:WaitForChild("Events"):WaitForChild("ChangeTank"):FireServer(unpack(args))
+    end
+})
+
 Tanks:AddButton({
     Name = "Auto Kill", 
     Callback = function ()
@@ -163,23 +82,18 @@ Tanks:AddButton({
             Image = "rbxassetid://6525527347",
             Time = 3
         })
-        for i,v in pairs(game.Players:GetPlayers()) do
-            if v ~= game.Players.LocalPlayer and v.Team ~= tostring(game.Players.LocalPlayer.Team) or v.Team ~= tostring("Lobby") then
+        local PlayerUsername = game:GetService("Players").LocalPlayer.name
+       for i,v in pairs(game.Players:GetPlayers()) do
+            if v ~= game.Players.LocalPlayer and v.Team ~= tostring(game.Players.LocalPlayer.Team) then
                 plr = v
             end
         end
-        for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
-            if v:IsA("Model") then
-                TankName = v.Name
-            end
-        end
-        TeleportTP(plr.Character.HumanoidRootPart.CFrame + Vector3.new(0,0,150))
-        repeat
-        game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(plr.Character.HumanoidRootPart.CFrame + Vector3.new(0,0,150))
-        game.Workspace.CurrentCamera.CoordinateFrame = CFrame.new(game.Workspace.CurrentCamera.CoordinateFrame.p,plr.Character.HumanoidRootPart.CFrame.p)
-        game:GetService("Players").LocalPlayer.Character[TankName].StartFiring:FireServer()
-        task.wait()
-        until plr.Character == nil
+        game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(plr.Character.HumanoidRootPart.CFrame + Vector3.new(0,-10,0))
+        task.wait(0.1)
+        game:GetService("Workspace"):FindFirstChild(PlayerUsername):FindFirstChild(TankToSpawn).Target.Value = plr.Character.HumanoidRootPart.Position
+        game:GetService("Players").LocalPlayer.Character:FindFirstChild(tank).StartFiring:FireServer()
+        task:wait()
+        game:GetService("Players").LocalPlayer.Character:FindFirstChild(TankToSpawn).StopFiring:FireServer()
     end
 })
 
