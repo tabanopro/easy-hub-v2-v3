@@ -1,6 +1,6 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 
-local Window = OrionLib:MakeWindow({Name = " Easy Hub (Free) - [Tankery!] ~ Collab with Noob Army Script~ ", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest", IntroEnabled = true, IntroText = "Please wait.. Easy Hub Loading..."})
+local Window = OrionLib:MakeWindow({Name = " Easy Hub V2 (Free) - [Tankery!] ", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest", IntroEnabled = true, IntroText = "Please wait.. Easy Hub V2 Loading..."})
 
 --[[
 Name = <string> - The name of the UI.
