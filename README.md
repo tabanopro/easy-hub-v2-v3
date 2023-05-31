@@ -6,3 +6,4 @@ Some of the scripts here are for EDUCATIONAL PURPERSOES!!!
 To install any of our projects/modules run
 ```  game:GetService("InsertService"):LoadAsset("ID").Parent = game.Workspace```
 and replace ID with an id.
+### How to get id(s)/id list.
