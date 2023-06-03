@@ -18,6 +18,10 @@ Some of the scripts here are for EDUCATIONAL PURPERSOES!!!
   3. Search Tabano Studios in the search bar
   4. Insert any model.
  
+ # Installation (Method 3: Easy Hub Loader)
+ ### With the easy hub loader, you can load all supported easy hub projects!
+ #### Step 1 coming soon
+ Get easy hub 
 # Devlopers
 Made by tabanopro#3951 & okho#2479
 99% written in lua/roblox lua.
